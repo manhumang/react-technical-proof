@@ -1,78 +1,65 @@
-# React + TypeScript + Vite
+# react-technical-proof
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React technical proof: a persisted list manager where users can add, select, and delete items through a modal dialog.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The app renders a single page with a list of strings. Items are created via an "ADD" modal, toggled for selection, and removed either individually (double-click a label) or in bulk using the "DELETE" button. A reset button removes the most recently added item. The list is persisted to `localStorage`, so entries survive a page reload.
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Add items through a native `<dialog>` modal (with validation and keyboard/backdrop dismissal)
+- Select items and delete all selected items
+- Delete a single item by double-clicking it
+- Reset (pop) the last added item
+- State persisted across reloads via Zustand's `persist` middleware
+- Adaptive UI built with CSS Modules and design tokens
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Tech stack
 
-## Expanding the ESLint configuration
+- **React 19** with **TypeScript**
+- **Vite** for dev server and builds (React Compiler enabled via Babel)
+- **Zustand** for state management with `localStorage` persistence
+- **Vitest** + **Testing Library** with `jsdom` for unit/component tests
+- **ESLint** for linting
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+src/
+├── components/
+│   ├── App/             # Root layout component
+│   ├── Button/          # Reusable primary/secondary button
+│   ├── Input/           # Labelled text input
+│   ├── Modal/           # Native dialog wrapper for adding items
+│   ├── SelectableList/  # Checkbox list with double-click delete
+│   └── pages/
+│       └── StringList/  # Main page composing the list and actions
+├── store/
+│   └── useItemsStore/   # Zustand store (items + selection)
+├── styles/              # Reset, fonts, design tokens, typography
+├── assets/              # Fonts and icons
+├── test/                # Test setup
+└── main.tsx             # App entry point
 ```
+
+## Getting started
+
+Requires Node.js and pnpm.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+The dev server opens automatically at `http://localhost:5173`.
+
+## Scripts
+
+| Command        | Description                         |
+| -------------- | ----------------------------------- |
+| `pnpm dev`     | Start the Vite dev server           |
+| `pnpm build`   | Type-check and build for production |
+| `pnpm preview` | Preview the production build        |
+| `pnpm test`    | Run the Vitest test suite           |
+| `pnpm lint`    | Run ESLint                          |

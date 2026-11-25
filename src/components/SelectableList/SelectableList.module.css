@@ -1,0 +1,37 @@
+.selectableList {
+  background: var(--color-neutral-100) 0% 0% no-repeat padding-box;
+  border: 0.0625rem solid var(--color-neutral-400);
+  height: 14.1875rem;
+  margin: 2.1875rem 0 1.875rem 0;
+  overflow: auto;
+  padding: 0.6875rem;
+  width: 100%;
+}
+
+.label {
+  composes: text-body from global;
+  cursor: pointer;
+  display: block;
+  padding: 0.5625rem 0.9375rem;
+  width: 100%;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox:checked + .label {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.checkbox:focus-visible + .label {
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+.checkbox:checked:focus-visible + .label {
+  outline: 3px solid var(--color-white);
+  outline-offset: -5px;
+}

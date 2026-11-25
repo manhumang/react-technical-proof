@@ -1,0 +1,37 @@
+.button {
+  align-items: center;
+  composes: text-button from global;
+  cursor: pointer;
+  border: 0.0625rem solid var(--color-primary);
+  border-radius: 3.125rem;
+  display: flex;
+  height: 3.0625rem;
+  justify-content: center;
+  min-width: 8.625rem;
+  &:disabled {
+    background: var(--color-neutral-400) 0% 0% no-repeat padding-box;
+    color: var(--color-neutral-600);
+    border: 0.0625rem solid var(--color-neutral-400);
+    cursor: not-allowed;
+  }
+}
+
+.buttonPrimary {
+  background: var(--color-primary) 0% 0% no-repeat padding-box;
+  color: var(--color-white);
+  composes: button;
+  &:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: -5px;
+  }
+}
+
+.buttonSecondary {
+  background: var(--color-white) 0% 0% no-repeat padding-box;
+  color: var(--color-primary);
+  composes: button;
+  &:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: -3px;
+  }
+}

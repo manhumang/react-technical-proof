@@ -1,0 +1,58 @@
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog {
+  --transition-props: 0.8s ease;
+  --closed-y: calc(-100% - 50vh - 100vmax);
+  background: var(--color-neutral-200) 0% 0% no-repeat padding-box;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 0 100vmax var(--color-neutral-200);
+  display: block;
+  flex-direction: column;
+  left: 50%;
+  margin: 0;
+  max-width: 43.75rem;
+  overflow: visible;
+  padding: 0;
+  top: 3.125rem;
+  transform: translate(-50%, var(--closed-y));
+  transition:
+    transform var(--transition-props),
+    visibility var(--transition-props);
+  visibility: hidden;
+  width: 100%;
+  z-index: 999999;
+  &::backdrop {
+    background-color: transparent;
+  }
+  &[open] {
+    transform: translateX(-50%);
+    visibility: visible;
+  }
+
+  @media (max-width: 576px) {
+    top: 0;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.9375rem;
+  margin-top: 1.5625rem;
+}
+
+.form {
+  background: var(--color-white);
+  box-shadow: 0 0.625rem 1.5rem var(--color-neutral-300);
+  border-radius: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 3.125rem;
+  @media (max-width: 576px) {
+    height: 100vh;
+    border-radius: 0;
+  }
+}

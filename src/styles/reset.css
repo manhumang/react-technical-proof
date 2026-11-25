@@ -1,0 +1,57 @@
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  scrollbar-color: var(--color-neutral-300) transparent;
+  ::-webkit-scrollbar {
+    width: 1.25rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6.25rem;
+    border: 0.3125rem solid transparent;
+    background-clip: content-box;
+    background-color: var(--color-neutral-300);
+  }
+}
+
+input {
+  field-sizing: content;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

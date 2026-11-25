@@ -1,0 +1,49 @@
+.stringList {
+  align-items: center;
+  background: var(--color-white) 0% 0% no-repeat padding-box;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.3125rem 0.75rem var(--color-neutral-300);
+  display: flex;
+  flex-direction: column;
+  min-height: 36.0625rem;
+  max-width: 56.25rem;
+  padding: 3.125rem;
+  width: 100%;
+}
+
+.title {
+  composes: text-title from global;
+  color: var(--color-neutral-600);
+  margin-bottom: 0.8125rem;
+  text-align: center;
+}
+
+.description {
+  composes: text-body from global;
+  color: var(--color-neutral-600);
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.9375rem;
+  justify-content: space-between;
+  width: 100%;
+  @media (max-width: 576px) {
+    flex-direction: column;
+    & button {
+      min-width: auto;
+    }
+    & > button {
+      width: 100%;
+    }
+    & > .buttonsSecondary > button {
+      flex: 1;
+    }
+  }
+}
+
+.buttonsSecondary {
+  display: flex;
+  gap: 0.9375rem;
+}

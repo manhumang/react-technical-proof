@@ -1,0 +1,16 @@
+:root {
+  --color-background-primary: #a1c4fd;
+  --color-background-secondary: #c2e9fb;
+  --color-primary: #324bff;
+  --color-neutral-100: #f7f7f7;
+  --color-neutral-200: #0000001a;
+  --color-neutral-300: #0000001f;
+  --color-neutral-400: #cccccc;
+  --color-neutral-500: #999999;
+  --color-neutral-600: #333333;
+  --color-white: #ffffff;
+
+  --font: "Montserrat";
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+}
